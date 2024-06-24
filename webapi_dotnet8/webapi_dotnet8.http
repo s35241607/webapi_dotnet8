@@ -1,0 +1,8 @@
+@webapi_dotnet8_HostAddress = https://localhost:32774
+
+GET {{webapi_dotnet8_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{webapi_dotnet8_HostAddress}}/Account/Signin
+Accept: application/json

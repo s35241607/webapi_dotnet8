@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  webapi_dotnet8:
+    image: ${DOCKER_REGISTRY-}webapidotnet8
+    container_name: webapi_dotnet8
+    build:
+      context: .
+      dockerfile: webapi_dotnet8/Dockerfile
+
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    volumes:
+         - postgres_data:/var/lib/postgresql/data
+    ports:
+        - 5432:5432
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+volumes:
+    postgres_data:
