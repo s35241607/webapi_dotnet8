@@ -1,5 +1,4 @@
-version: '3.4'
-
+name: microservices
 services:
   webapi_dotnet8:
     image: ${DOCKER_REGISTRY-}webapidotnet8
@@ -7,7 +6,8 @@ services:
     build:
       context: .
       dockerfile: webapi_dotnet8/Dockerfile
-
+    networks:
+      - net
   postgresql:
     image: postgres:latest
     container_name: postgresql
@@ -19,12 +19,22 @@ services:
          - postgres_data:/var/lib/postgresql/data
     ports:
         - 5432:5432
+    networks:
+      - net
 
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - webapi_dotnet8
+    networks:
+      - net
 volumes:
     postgres_data:
+networks:
+  net:
+    driver: bridge

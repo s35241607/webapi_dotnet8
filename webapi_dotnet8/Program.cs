@@ -11,9 +11,7 @@ namespace webapi_dotnet8
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("Postgres");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(connectionString));
+
 
 
             builder.Services.AddControllers();
