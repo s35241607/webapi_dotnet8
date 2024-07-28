@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string UserName { get; set; } = null!;
+        public string? NickName { get; set; }
         public string HashPassword { get; set; } = null!;
         public string Email { get; set; } = null!;
         public DateTime CreatAt { get; set; }
