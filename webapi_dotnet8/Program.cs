@@ -8,7 +8,6 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 using System.Reflection;
 using webapi_dotnet8.Controllers.v1;
 using webapi_dotnet8.Data;
-using webapi_dotnet8.Models;
 
 namespace webapi_dotnet8
 {

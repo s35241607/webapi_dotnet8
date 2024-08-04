@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using webapi_dotnet8.Data;
@@ -11,9 +12,11 @@ using webapi_dotnet8.Data;
 namespace webapi_dotnet8.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240803031140_anotherTable")]
+    partial class anotherTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +46,6 @@ namespace webapi_dotnet8.Migrations
                     b.Property<int>("ServerId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.HasKey("ChannelId");
 
                     b.HasIndex("ChannelTypeId");
@@ -63,15 +63,9 @@ namespace webapi_dotnet8.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ChannelTypeId"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("TypeName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ChannelTypeId");
 
@@ -98,9 +92,6 @@ namespace webapi_dotnet8.Migrations
 
                     b.Property<int>("SenderId")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("DirectMessageId");
 
@@ -129,9 +120,6 @@ namespace webapi_dotnet8.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -152,15 +140,9 @@ namespace webapi_dotnet8.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PermissionId"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("PermissionId");
 
@@ -184,9 +166,6 @@ namespace webapi_dotnet8.Migrations
 
                     b.Property<int>("OwnerId")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("ServerId");
 
@@ -214,9 +193,6 @@ namespace webapi_dotnet8.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("text");
@@ -236,12 +212,6 @@ namespace webapi_dotnet8.Migrations
 
                     b.Property<int>("PermissionId")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UserId", "ChannelId", "PermissionId");
 
@@ -266,9 +236,6 @@ namespace webapi_dotnet8.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UserId", "FriendId");
 

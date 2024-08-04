@@ -1,6 +1,6 @@
-﻿using webapi_dotnet8.Data;
+﻿using webapi_dotnet8.Models;
 
-namespace webapi_dotnet8.Models
+namespace webapi_dotnet8.Data
 {
     public class Query
     {

@@ -2,12 +2,19 @@
 {
     public class User
     {
-        public int Id { get; set; }
-        public string UserName { get; set; } = null!;
-        public string? NickName { get; set; }
-        public string HashPassword { get; set; } = null!;
+        public int UserId { get; set; }
+        public string Username { get; set; } = null!;
         public string Email { get; set; } = null!;
-        public DateTime CreatAt { get; set; }
-        public DateTime LastLoginAt { get; set;}
+        public string PasswordHash { get; set; } = null!;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; }
+
+        public ICollection<UserServer> UserServers { get; set; } = [];
+        public ICollection<Message> Messages { get; set; } = [];
+        public ICollection<UserChannelPermission> UserChannelPermissions { get; set; } = [];
+        public ICollection<UserFriend> Friends { get; set; } = [];
+        public ICollection<DirectMessage> SentMessages { get; set; } = [];
+        public ICollection<DirectMessage> ReceivedMessages { get; set; } = [];
     }
+
 }
