@@ -60,7 +60,8 @@ namespace webapi_dotnet8
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddFiltering()
-                .AddSorting();
+                .AddSorting()
+                .AddProjections();
 
 
 
