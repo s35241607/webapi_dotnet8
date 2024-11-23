@@ -19,7 +19,7 @@ namespace webapi_dotnet8
 
             // Add services to the container.
 
-            // µù¥U IHttpContextAccessor
+            // ï¿½ï¿½ï¿½U IHttpContextAccessor
             builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddControllers();
@@ -32,7 +32,7 @@ namespace webapi_dotnet8
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
 
-            // °t¸m API ª©¥»±±¨î
+            // ï¿½tï¿½m API ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             builder.Services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(1);
@@ -55,7 +55,7 @@ namespace webapi_dotnet8
 
             builder.Services.AddSingleton<Libary>();
 
-            // ³]¸m GraphQL ªA°È
+            // ï¿½]ï¿½m GraphQL ï¿½Aï¿½ï¿½
             builder.Services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
@@ -67,13 +67,13 @@ namespace webapi_dotnet8
 
             var app = builder.Build();
 
-            // ³]¸m GraphQL ¤¤¶¡¥ó
+            // ï¿½]ï¿½m GraphQL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             app.MapGraphQL();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                // °t¸m Swagger ¤¤¤¶¼h
+                // ï¿½tï¿½m Swagger ï¿½ï¿½ï¿½ï¿½ï¿½h
                 app.UseSwagger();
                 app.UseSwaggerUI(options =>
                 {
