@@ -43,6 +43,8 @@ namespace webapi_dotnet8.Services
             switch(action)
             {
                 case ReservationAction.Start:
+                    // 驗證是否為開單人
+                    // Buyer 跟 其他 User 會有不同的 nextStage
                     break;
                 case ReservationAction.Cancel:
                     break;
@@ -151,12 +153,14 @@ namespace webapi_dotnet8.Services
     }
     public class ReservationService(StageFactory stageFactory)
     {
-        public async Task Action(int reservation_id, ReservationAction action)
+        public async Task Action(int reservation_id, ReservationAction action, IActionInput input)
         {
+            // 透過 repository 去取得當前關卡
             var currentStage = ReservationStage.Init;
             var stage = stageFactory.CreateStage(currentStage);
             await stage.HandleActionAsync(action);
         }
+
     }
 
 }
